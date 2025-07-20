@@ -3,44 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suraj Natarajan - Portfolio</title>
+    <title>Suraj Natarajan - Electrical Engineer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        :root {
+            --slate-900: #0F172A;
+            --slate-800: #1E293B;
+            --slate-700: #334155;
+            --slate-400: #94A3B8;
+            --slate-300: #CBD5E1;
+            --blue-500: #3B82F6;
+            --blue-400: #60A5FA;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            background-color: var(--slate-900);
+            color: var(--slate-300);
         }
-        .section-title {
-            @apply text-4xl font-bold text-white mb-12 text-center relative pb-4;
+        
+        section {
+            scroll-snap-align: start;
         }
-        .section-title::after {
+
+        /* New Section Title Style */
+        .section-heading {
+            @apply w-full text-center mb-12;
+        }
+        .section-heading .icon-wrapper {
+            @apply bg-slate-800 p-4 inline-block rounded-2xl border border-slate-700 shadow-lg;
+        }
+        .section-heading .icon-wrapper svg {
+            @apply w-8 h-8 text-blue-400;
+        }
+        .section-heading h2 {
+            @apply text-3xl md:text-4xl font-extrabold text-white mt-4;
+        }
+
+        /* Card styles with hover glow */
+        .card {
+            @apply bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:border-blue-500/50 hover:shadow-blue-500/20 hover:-translate-y-1;
+        }
+        
+        /* Navigation link style */
+        nav a {
+            @apply text-slate-400 hover:text-white transition-colors duration-300 relative py-1;
+        }
+        nav a::after {
             content: '';
             position: absolute;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: #3b82f6; /* blue-500 */
-            border-radius: 2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--blue-400);
+            transition: width 0.3s ease;
         }
-        .card {
-            @apply bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105;
+        nav a:hover::after {
+            width: 100%;
         }
-        nav a {
-            @apply text-gray-400 hover:text-white transition-colors duration-300;
+
+        /* New Contact Form Styles */
+        .form-container {
+             @apply bg-slate-800/40 p-8 md:p-12 rounded-2xl border border-slate-700 shadow-2xl backdrop-blur-md;
         }
-        .dark-input {
-            @apply w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300;
+        .form-field {
+            position: relative;
+        }
+        .form-input {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px solid var(--slate-700);
+            color: white;
+            width: 100%;
+            padding: 10px 0;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-bottom-color: var(--blue-500);
+        }
+        .form-label {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            color: var(--slate-400);
+            transition: all 0.3s;
+            pointer-events: none; /* Allows click-through */
+        }
+        .form-input:focus + .form-label,
+        .form-input:not(:placeholder-shown) + .form-label {
+            top: -12px;
+            font-size: 0.8rem;
+            color: var(--blue-400);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Background decorative blobs */
+        .blob1 {
+            position: absolute;
+            top: -10%;
+            left: -15%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15), rgba(59, 130, 246, 0));
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(50px);
+        }
+        .blob2 {
+             position: absolute;
+            bottom: -15%;
+            right: -15%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at center, rgba(29, 78, 216, 0.1), rgba(29, 78, 216, 0));
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(50px);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-300">
+<body class="bg-slate-900 text-slate-300 overflow-x-hidden">
 
     <!-- Header -->
-    <header class="bg-gray-900/70 backdrop-blur-md shadow-lg shadow-black/20 sticky top-0 z-50">
+    <header class="bg-slate-900/70 backdrop-blur-md shadow-lg shadow-black/20 sticky top-0 z-50">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white">Suraj Natarajan</a>
             <div class="hidden md:flex items-center space-x-8">
@@ -54,8 +158,7 @@
                 <i data-lucide="menu"></i>
             </button>
         </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-gray-800">
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-slate-800">
             <a href="#about" class="block py-2 text-white">About</a>
             <a href="#experience" class="block py-2 text-white">Experience</a>
             <a href="#projects" class="block py-2 text-white">Projects</a>
@@ -64,271 +167,221 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-6">
+        <div class="relative">
+            <div class="blob1"></div>
+            <div class="blob2"></div>
 
-        <!-- Hero Section -->
-        <section id="home" class="text-center py-20">
-            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Suraj Subramaniam Natarajan</h1>
-            <p class="text-xl md:text-2xl text-blue-400 font-semibold mb-6">Electrical and Computer Engineer</p>
-            <p class="max-w-3xl mx-auto text-lg text-gray-400 mb-8">
-                A highly motivated and detail-oriented engineer with a passion for Analog and Digital IC Design, currently pursuing a Master's at UC San Diego. Experienced in resolving complex technical challenges and contributing to cutting-edge semiconductor technology.
-            </p>
-            <div class="flex justify-center space-x-4">
-                <a href="https://linkedin.com/profile/suraj-natarajan" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 flex items-center space-x-2">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="mailto:suraj2001j@gmail.com" class="bg-gray-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-600 transition-colors duration-300 flex items-center space-x-2">
-                     <i data-lucide="mail" class="w-5 h-5"></i>
-                    <span>Email Me</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- About Me Section -->
-        <section id="about" class="py-20">
-             <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-center">
+        <!-- About Me / Hero Section -->
+        <section id="about" class="min-h-screen flex items-center reveal">
+             <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-12 items-center">
                 <div class="md:col-span-1 flex justify-center">
-                    <img src="https://placehold.co/250x250/1F2937/9CA3AF?text=SN" alt="Suraj Natarajan" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg border-4 border-gray-700">
+                    <div class="relative">
+                        <img src="https://placehold.co/250x250/0F172A/94A3B8?text=SN" alt="Suraj Natarajan" class="rounded-full w-56 h-56 md:w-64 md:h-64 object-cover shadow-2xl shadow-blue-500/20 border-4 border-slate-700">
+                    </div>
                 </div>
-                <div class="md:col-span-2">
-                    <h2 class="text-4xl font-bold text-white mb-12 text-left">About Me</h2>
-                    <p class="mb-4">I am a passionate Electrical Engineer specializing in VLSI and Integrated Circuits. My journey began with a Bachelor's in Electrical and Electronics Engineering, leading me to a role as an Application Engineer at GlobalFoundries, where I honed my problem-solving skills and deepened my understanding of semiconductor design processes.</p>
-                    <p class="mb-4">Currently, I am expanding my expertise by pursuing a Master of Science in Electrical and Computer Engineering at the University of California, San Diego. My academic and professional experiences have equipped me with a strong foundation in both analog and digital design, and I am eager to contribute to innovative projects in the semiconductor industry.</p>
-                    <p>I thrive in collaborative environments and am dedicated to developing efficient and robust solutions for complex engineering problems.</p>
+                <div class="md:col-span-2 text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-2">Suraj Natarajan</h1>
+                    <p class="text-xl md:text-2xl text-blue-400 font-semibold mb-6">Electrical & Computer Engineer</p>
+                    <p class="mb-4 text-slate-400">Passionate engineer specializing in VLSI and Integrated Circuits, currently pursuing a Master's at UC San Diego. With hands-on experience as an Application Engineer at GlobalFoundries, I have a proven track record of solving complex design challenges and contributing to cutting-edge semiconductor technology.</p>
+                    <p class="mb-8 text-slate-400">I thrive in collaborative environments and am dedicated to developing efficient, robust solutions. Let's connect!</p>
+                     <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="https://www.linkedin.com/in/suraj-subramaniam-natarajan-150143208/" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+                            <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <button onclick="copyEmailToClipboard(this)" class="bg-slate-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-slate-600 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+                             <i data-lucide="mail" class="w-5 h-5"></i>
+                            <span class="button-text">Email Me</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="py-20 bg-black/20 -mx-6 px-6">
-            <h2 class="section-title">Professional Experience</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
-                    <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-white">Application Engineer</h3>
-                            <p class="text-lg text-blue-400 font-semibold">GlobalFoundries Engineering Pvt Ltd (GF)</p>
+        <section id="experience" class="min-h-screen flex flex-col justify-center reveal">
+            <div class="section-heading">
+                <span class="icon-wrapper"><i data-lucide="briefcase"></i></span>
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="max-w-4xl mx-auto w-full">
+                <div class="bg-slate-800 p-8 rounded-2xl shadow-lg border border-slate-700 relative">
+                    <div class="absolute top-0 left-8 h-full border-l-2 border-dashed border-slate-700"></div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1 w-8 h-8 bg-blue-500 rounded-full border-4 border-slate-800 flex items-center justify-center">
+                            <i data-lucide="building-2" class="w-4 h-4 text-white"></i>
                         </div>
-                        <div class="text-left sm:text-right text-gray-400 mt-2 sm:mt-0">
-                            <p>Bengaluru, India</p>
-                            <p>July 2022 - Sep 2024</p>
+                        <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white">Application Engineer</h3>
+                                <p class="text-lg text-blue-400 font-semibold">GlobalFoundries Engineering Pvt Ltd (GF)</p>
+                            </div>
+                            <div class="text-left sm:text-right text-slate-400 mt-2 sm:mt-0 shrink-0">
+                                <p>Bengaluru, India</p>
+                                <p>July 2022 - Sep 2024</p>
+                            </div>
                         </div>
+                        <ul class="list-disc list-inside space-y-3 text-slate-300">
+                            <li>Owned and successfully resolved approximately 280 technical cases from customers and IP vendors concerning design and PDK-related queries.</li>
+                            <li>Addressed and resolved numerous inquiries on DRC, LVS, and Fillgen discrepancies with effective cross-functional team collaboration.</li>
+                            <li>Validated over 12 reference flows for power, performance, and area (PPA) compliance.</li>
+                            <li>Authored comprehensive digital design guides for 130nm processes and led revisions of technology training manuals.</li>
+                        </ul>
                     </div>
-                    <ul class="list-disc list-inside space-y-3 text-gray-300">
-                        <li>Owned and successfully resolved approximately 280 technical cases from customers and IP vendors concerning design and PDK-related queries across various GF technology nodes, consistently meeting the turn-around time (TAT).</li>
-                        <li>Addressed and resolved numerous inquiries on DRC, LVS, and Fillgen discrepancies with effective cross-functional team collaboration.</li>
-                        <li>Validated over 12 reference flows for power, performance, and area (PPA) compliance against the latest PDKs and tool versions.</li>
-                        <li>Authored comprehensive digital design guides for 130nm processes.</li>
-                        <li>Initiated and led the revision of technology training manuals for 130nm, 180nm, and 55nm processes to align with the latest technical specifications.</li>
-                    </ul>
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="py-20">
-            <h2 class="section-title">Projects</h2>
-            
-            <h3 class="text-2xl font-bold text-gray-200 mb-6 text-center">Analog IC Design</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
-                <div class="card">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-white mb-2">Design porting of a multistage amplifier</h4>
-                        <p class="mb-4 text-gray-400">Analyzed and ported a 2-stage amplifier to IBM's 180nm process, optimizing for low power dissipation while meeting all design specifications. Verified performance through extensive simulations in Virtuoso.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Cadence Virtuoso</span>
-                             <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">IBM 180nm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-white mb-2">Layout and Characterization of SAR ADC</h4>
-                        <p class="mb-4 text-gray-400">Executed the layout for a 9-bit SAR ADC's comparator core and capacitive DAC in TSMC 65nm. Applied inter-digitation and common centroid techniques for matching and performed PEX, corner, and Monte Carlo simulations.</p>
-                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">TSMC 65nm</span>
-                            <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Layout</span>
-                             <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">PEX</span>
-                        </div>
-                    </div>
-                </div>
+        <section id="projects" class="min-h-screen flex flex-col justify-center reveal">
+            <div class="section-heading">
+                <span class="icon-wrapper"><i data-lucide="lightbulb"></i></span>
+                <h2>Projects Showcase</h2>
             </div>
+            <div class="max-w-6xl mx-auto w-full">
+                <h3 class="text-2xl font-bold text-gray-200 mb-6 text-center">Analog IC Design</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+                    <div class="card reveal"><div class="p-8"><h4 class="text-xl font-bold text-white mb-2">Design porting of a multistage amplifier</h4><p class="mb-4 text-slate-400">Analyzed and ported a 2-stage amplifier to IBM's 180nm process, optimizing for low power dissipation while meeting all design specifications.</p><div class="flex flex-wrap gap-2"><span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Cadence Virtuoso</span><span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">IBM 180nm</span></div></div></div>
+                    <div class="card reveal"><div class="p-8"><h4 class="text-xl font-bold text-white mb-2">Layout and Characterization of SAR ADC</h4><p class="mb-4 text-slate-400">Executed the layout for a 9-bit SAR ADC's comparator core and capacitive DAC in TSMC 65nm, applying matching techniques and simulations.</p><div class="flex flex-wrap gap-2"><span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">TSMC 65nm</span><span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Layout & PEX</span></div></div></div>
+                </div>
 
-            <h3 class="text-2xl font-bold text-gray-200 mb-6 text-center">Digital Design</h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <div class="card">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-white mb-2">4-tap 16-bit Unsigned Averaging FIR Filter</h4>
-                        <p class="mb-4 text-gray-400">Designed a high-frequency (2GHz) FIR filter in SystemVerilog, comparing different adder architectures (carry ripple vs. carry save) to optimize for power, area, and timing (WNS).</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">SystemVerilog</span>
-                             <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">RTL Design</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-white mb-2">Viterbi Decoder</h4>
-                        <p class="mb-4 text-gray-400">Designed and verified a Viterbi decoder for a ½-rate convolutional encoder using SystemVerilog. Synthesized with Quartus, validated in ModelSim, and tested error correction with injected single and multi-bit errors.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">SystemVerilog</span>
-                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Quartus</span>
-                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">ModelSim</span>
-                        </div>
-                    </div>
-                </div>
-                 <div class="card">
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold text-white mb-2">Dual-Core ML Accelerator</h4>
-                        <p class="mb-4 text-gray-400">Designed a dual-core ML accelerator for transformer attention mechanisms using a 1-D vector processor architecture. Executed the complete RTL-GDS flow, using pipelining and multi-cycle paths to meet timing with zero violations.</p>
-                          <div class="flex flex-wrap gap-2">
-                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">RTL-GDS</span>
-                             <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Pipelining</span>
-                             <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Timing Closure</span>
-                        </div>
-                    </div>
+                <h3 class="text-2xl font-bold text-gray-200 mb-6 text-center">Digital Design</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <div class="card reveal"><div class="p-8"><h4 class="text-xl font-bold text-white mb-2">Averaging FIR Filter</h4><p class="mb-4 text-slate-400">Designed a 2GHz FIR filter in SystemVerilog, comparing adder architectures to optimize for PPA and timing.</p><div class="flex flex-wrap gap-2"><span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">SystemVerilog</span><span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">RTL Design</span></div></div></div>
+                    <div class="card reveal"><div class="p-8"><h4 class="text-xl font-bold text-white mb-2">Viterbi Decoder</h4><p class="mb-4 text-slate-400">Designed and verified a Viterbi decoder for a ½-rate convolutional encoder, testing error correction with injected errors.</p><div class="flex flex-wrap gap-2"><span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Quartus</span><span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">ModelSim</span></div></div></div>
+                    <div class="card reveal"><div class="p-8"><h4 class="text-xl font-bold text-white mb-2">Dual-Core ML Accelerator</h4><p class="mb-4 text-slate-400">Designed a dual-core ML accelerator for transformers, executing the complete RTL-GDS flow and meeting timing.</p><div class="flex flex-wrap gap-2"><span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">RTL-GDS</span><span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Timing Closure</span></div></div></div>
                 </div>
             </div>
         </section>
         
         <!-- Skills & Education Section -->
-        <section id="skills" class="py-20 bg-black/20 -mx-6 px-6">
-            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-                <!-- Skills -->
+        <section id="skills" class="min-h-screen flex flex-col justify-center reveal">
+            <div class="section-heading">
+                <span class="icon-wrapper"><i data-lucide="sparkles"></i></span>
+                <h2>Skills & Education</h2>
+            </div>
+            <div class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-x-12 gap-y-16">
                 <div>
-                    <h2 class="text-4xl font-bold text-white mb-12 text-left">Skills</h2>
-                    <div class="space-y-6">
-                        <div>
-                            <h4 class="text-xl font-semibold mb-3 text-white">EDA Tools</h4>
-                            <div class="flex flex-wrap gap-3">
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Cadence Virtuoso</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Genus</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Innovus</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Synopsys Custom Compiler</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">ICC2</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Design Compiler</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">PrimeTime</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">CalibreDRV</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Intel Quartus</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Siemens ModelSim</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Yosys</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">OpenSTA</span>
-                            </div>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold mb-3 text-white">Technical Languages</h4>
-                             <div class="flex flex-wrap gap-3">
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">C</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">C++</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Python</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Java</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">SKILL</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">TCL</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">JavaScript</span>
-                             </div>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold mb-3 text-white">Hardware & Platforms</h4>
-                             <div class="flex flex-wrap gap-3">
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Arduino</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Raspberry Pi</span>
-                                <span class="bg-gray-700 px-4 py-2 rounded-lg">MATLAB</span>
-                             </div>
-                        </div>
-                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center md:text-left">Core Competencies</h3>
+                    <div class="space-y-6"><h4 class="text-xl font-semibold mb-3 text-white">EDA Tools</h4><div class="flex flex-wrap gap-3 justify-center md:justify-start"><span class="bg-slate-700 px-4 py-2 rounded-lg">Cadence Virtuoso</span><span class="bg-slate-700 px-4 py-2 rounded-lg">Genus/Innovus</span><span class="bg-slate-700 px-4 py-2 rounded-lg">Synopsys ICC2/DC</span><span class="bg-slate-700 px-4 py-2 rounded-lg">PrimeTime</span><span class="bg-slate-700 px-4 py-2 rounded-lg">CalibreDRV</span><span class="bg-slate-700 px-4 py-2 rounded-lg">Intel Quartus</span></div></div>
+                    <div class="space-y-6 mt-6"><h4 class="text-xl font-semibold mb-3 text-white">Technical Languages</h4><div class="flex flex-wrap gap-3 justify-center md:justify-start"><span class="bg-slate-700 px-4 py-2 rounded-lg">C/C++</span><span class="bg-slate-700 px-4 py-2 rounded-lg">Python</span><span class="bg-slate-700 px-4 py-2 rounded-lg">SystemVerilog</span><span class="bg-slate-700 px-4 py-2 rounded-lg">SKILL</span><span class="bg-slate-700 px-4 py-2 rounded-lg">TCL</span></div></div>
                 </div>
-                <!-- Education -->
                 <div>
-                     <h2 class="text-4xl font-bold text-white mb-12 text-left">Education</h2>
+                     <h3 class="text-2xl font-bold text-white mb-6 text-center md:text-left">Education</h3>
                      <div class="space-y-6">
-                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
-                            <h3 class="text-xl font-bold text-white">University of California, San Diego</h3>
-                            <p class="text-md text-blue-400 font-semibold">Master of Science in Electrical and Computer Engineering</p>
-                            <p class="text-sm text-gray-400 mt-1">Sep 2024 - Aug 2026</p>
-                        </div>
-                         <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
-                            <h3 class="text-xl font-bold text-white">Sri Sivasubramaniya Nadar (SSN) College of Engineering</h3>
-                            <p class="text-md text-blue-400 font-semibold">Bachelor of Engineering in Electrical and Electronics Engineering</p>
-                            <p class="text-sm text-gray-400 mt-1">June 2018 - May 2022</p>
-                        </div>
+                        <div class="card p-6"><h3 class="text-xl font-bold text-white">University of California, San Diego</h3><p class="text-md text-blue-400 font-semibold">M.S. in Electrical and Computer Engineering</p><p class="text-sm text-slate-400 mt-1">2024 - 2026</p></div>
+                        <div class="card p-6"><h3 class="text-xl font-bold text-white">Sri Sivasubramaniya Nadar College</h3><p class="text-md text-blue-400 font-semibold">B.E. in Electrical and Electronics Engineering</p><p class="text-sm text-slate-400 mt-1">2018 - 2022</p></div>
                      </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20">
-             <h2 class="section-title">Get In Touch</h2>
-             <div class="max-w-2xl mx-auto text-center">
-                 <p class="text-lg mb-8 text-gray-400">I'm currently seeking new opportunities and am open to collaborations. Feel free to reach out if you have a project in mind or just want to connect using the form below!</p>
-             </div>
-            <div class="max-w-2xl mx-auto bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-8 rounded-xl shadow-lg">
-                <form action="https://formsubmit.co/suraj2001j@gmail.com" method="POST">
-                    <input type="hidden" name="_captcha" value="true">
-                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label for="name" class="block text-left text-sm font-medium text-gray-300 mb-2">Full Name</label>
-                            <input type="text" name="name" id="name" placeholder="John Doe" required class="dark-input">
+        <section id="contact" class="min-h-screen flex flex-col justify-center reveal">
+            <div class="section-heading">
+                <span class="icon-wrapper"><i data-lucide="send"></i></span>
+                <h2>Get In Touch</h2>
+            </div>
+            <div class="max-w-3xl mx-auto text-center w-full">
+                 <p class="text-lg mb-12 text-slate-400 -mt-8">Looking to hire an electrical engineer or collaborate on a project? Send me a message.</p>
+                <div class="form-container">
+                    <form action="https://formsubmit.co/suraj2001j@gmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="true">
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10 mb-8">
+                            <div class="form-field">
+                                <input type="text" name="name" id="name" required class="form-input" placeholder=" ">
+                                <label for="name" class="form-label">Your Name</label>
+                            </div>
+                            <div class="form-field">
+                                <input type="email" name="email" id="email" required class="form-input" placeholder=" ">
+                                <label for="email" class="form-label">Your Email</label>
+                            </div>
                         </div>
-                        <div>
-                            <label for="email" class="block text-left text-sm font-medium text-gray-300 mb-2">Email Address</label>
-                            <input type="email" name="email" id="email" placeholder="you@example.com" required class="dark-input">
+                        <div class="form-field mb-10">
+                            <textarea name="message" id="message" rows="4" required class="form-input" placeholder=" "></textarea>
+                            <label for="message" class="form-label">Your Message</label>
                         </div>
-                    </div>
-                    
-                    <div class="mb-6">
-                        <label for="message" class="block text-left text-sm font-medium text-gray-300 mb-2">Message</label>
-                        <textarea name="message" id="message" rows="5" placeholder="Your message..." required class="dark-input"></textarea>
-                    </div>
-                    
-                    <div class="text-center">
-                        <button type="submit" class="w-full md:w-auto inline-flex items-center justify-center bg-blue-600 text-white text-lg font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                        <button type="submit" class="w-full md:w-auto inline-flex items-center justify-center bg-slate-700 text-white text-lg font-semibold px-8 py-4 rounded-full hover:bg-slate-600 transition-colors duration-300">
                             Send Message
-                            <i data-lucide="send" class="ml-2 w-5 h-5"></i>
+                            <i data-lucide="send" class="ml-3 w-5 h-5"></i>
                         </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </section>
+        </div>
     </main>
     
     <!-- Footer -->
-    <footer class="bg-gray-800/50 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
+    <footer class="bg-slate-900 text-white py-8 border-t border-slate-800">
+        <div class="container mx-auto px-6 text-center text-slate-400">
              <div class="flex justify-center space-x-6 mb-4">
-                <a href="https://linkedin.com/profile/suraj-natarajan" target="_blank" class="text-gray-400 hover:text-white">
-                    <i data-lucide="linkedin" class="w-6 h-6"></i>
-                </a>
-                <a href="mailto:suraj2001j@gmail.com" class="text-gray-400 hover:text-white">
-                    <i data-lucide="mail" class="w-6 h-6"></i>
-                </a>
+                <a href="https://www.linkedin.com/in/suraj-subramaniam-natarajan-150143208/" target="_blank" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="mailto:suraj2001j@gmail.com" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
             </div>
-            <p>&copy; <span id="year"></span> Suraj Subramaniam Natarajan. All Rights Reserved.</p>
+            <p>&copy; <span id="year"></span> Suraj Natarajan. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile menu toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
-        
-        // Set current year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        document.querySelectorAll('#mobile-menu a, nav a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => { 
+                if(link.hash) { // It's an anchor link
+                    e.preventDefault();
+                    document.querySelector(link.hash).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+                if(mobileMenu.contains(link)) {
+                    mobileMenu.classList.add('hidden');
+                }
             });
         });
+
+        function copyEmailToClipboard(button) {
+            const email = 'suraj2001j@gmail.com';
+            navigator.clipboard.writeText(email).then(() => {
+                const textSpan = button.querySelector('.button-text');
+                const originalText = textSpan.textContent;
+                textSpan.textContent = 'Email Copied!';
+                button.classList.add('bg-green-600', 'hover:bg-green-700');
+                button.classList.remove('bg-slate-700', 'hover:bg-slate-600');
+                
+                setTimeout(() => {
+                    textSpan.textContent = originalText;
+                    button.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    button.classList.add('bg-slate-700', 'hover:bg-slate-600');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy email: ', err);
+            });
+        }
+        
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 }); // Increased threshold slightly
+
+        revealElements.forEach(elem => {
+            observer.observe(elem);
+        });
+
     </script>
 </body>
 </html>
