@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suraj Natarajan - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .section-title {
+            @apply text-4xl font-bold text-white mb-12 text-center relative pb-4;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #3b82f6; /* blue-500 */
+            border-radius: 2px;
+        }
+        .card {
+            @apply bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-xl shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105;
+        }
+        nav a {
+            @apply text-gray-400 hover:text-white transition-colors duration-300;
+        }
+        .dark-input {
+            @apply w-full px-4 py-3 bg-gray-700 border border-gray-600 text-white placeholder-gray-400 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-colors duration-300;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Header -->
+    <header class="bg-gray-900/70 backdrop-blur-md shadow-lg shadow-black/20 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">Suraj Natarajan</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 bg-gray-800">
+            <a href="#about" class="block py-2 text-white">About</a>
+            <a href="#experience" class="block py-2 text-white">Experience</a>
+            <a href="#projects" class="block py-2 text-white">Projects</a>
+            <a href="#skills" class="block py-2 text-white">Skills</a>
+            <a href="#contact" class="block py-2 text-white">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Hero Section -->
+        <section id="home" class="text-center py-20">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">Suraj Subramaniam Natarajan</h1>
+            <p class="text-xl md:text-2xl text-blue-400 font-semibold mb-6">Electrical and Computer Engineer</p>
+            <p class="max-w-3xl mx-auto text-lg text-gray-400 mb-8">
+                A highly motivated and detail-oriented engineer with a passion for Analog and Digital IC Design, currently pursuing a Master's at UC San Diego. Experienced in resolving complex technical challenges and contributing to cutting-edge semiconductor technology.
+            </p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://linkedin.com/profile/suraj-natarajan" target="_blank" class="bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300 flex items-center space-x-2">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:suraj2001j@gmail.com" class="bg-gray-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-600 transition-colors duration-300 flex items-center space-x-2">
+                     <i data-lucide="mail" class="w-5 h-5"></i>
+                    <span>Email Me</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+             <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-1 flex justify-center">
+                    <img src="https://placehold.co/250x250/1F2937/9CA3AF?text=SN" alt="Suraj Natarajan" class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover shadow-lg border-4 border-gray-700">
+                </div>
+                <div class="md:col-span-2">
+                    <h2 class="text-4xl font-bold text-white mb-12 text-left">About Me</h2>
+                    <p class="mb-4">I am a passionate Electrical Engineer specializing in VLSI and Integrated Circuits. My journey began with a Bachelor's in Electrical and Electronics Engineering, leading me to a role as an Application Engineer at GlobalFoundries, where I honed my problem-solving skills and deepened my understanding of semiconductor design processes.</p>
+                    <p class="mb-4">Currently, I am expanding my expertise by pursuing a Master of Science in Electrical and Computer Engineering at the University of California, San Diego. My academic and professional experiences have equipped me with a strong foundation in both analog and digital design, and I am eager to contribute to innovative projects in the semiconductor industry.</p>
+                    <p>I thrive in collaborative environments and am dedicated to developing efficient and robust solutions for complex engineering problems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-black/20 -mx-6 px-6">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-gray-700">
+                    <div class="flex flex-col sm:flex-row justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white">Application Engineer</h3>
+                            <p class="text-lg text-blue-400 font-semibold">GlobalFoundries Engineering Pvt Ltd (GF)</p>
+                        </div>
+                        <div class="text-left sm:text-right text-gray-400 mt-2 sm:mt-0">
+                            <p>Bengaluru, India</p>
+                            <p>July 2022 - Sep 2024</p>
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside space-y-3 text-gray-300">
+                        <li>Owned and successfully resolved approximately 280 technical cases from customers and IP vendors concerning design and PDK-related queries across various GF technology nodes, consistently meeting the turn-around time (TAT).</li>
+                        <li>Addressed and resolved numerous inquiries on DRC, LVS, and Fillgen discrepancies with effective cross-functional team collaboration.</li>
+                        <li>Validated over 12 reference flows for power, performance, and area (PPA) compliance against the latest PDKs and tool versions.</li>
+                        <li>Authored comprehensive digital design guides for 130nm processes.</li>
+                        <li>Initiated and led the revision of technology training manuals for 130nm, 180nm, and 55nm processes to align with the latest technical specifications.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <h2 class="section-title">Projects</h2>
+            
+            <h3 class="text-2xl font-bold text-gray-200 mb-6 text-center">Analog IC Design</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+                <div class="card">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Design porting of a multistage amplifier</h4>
+                        <p class="mb-4 text-gray-400">Analyzed and ported a 2-stage amplifier to IBM's 180nm process, optimizing for low power dissipation while meeting all design specifications. Verified performance through extensive simulations in Virtuoso.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Cadence Virtuoso</span>
+                             <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">IBM 180nm</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Layout and Characterization of SAR ADC</h4>
+                        <p class="mb-4 text-gray-400">Executed the layout for a 9-bit SAR ADC's comparator core and capacitive DAC in TSMC 65nm. Applied inter-digitation and common centroid techniques for matching and performed PEX, corner, and Monte Carlo simulations.</p>
+                         <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">TSMC 65nm</span>
+                            <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Layout</span>
+                             <span class="bg-blue-900/50 text-blue-300 text-sm font-medium px-2.5 py-0.5 rounded-full">PEX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-200 mb-6 text-center">Digital Design</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="card">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">4-tap 16-bit Unsigned Averaging FIR Filter</h4>
+                        <p class="mb-4 text-gray-400">Designed a high-frequency (2GHz) FIR filter in SystemVerilog, comparing different adder architectures (carry ripple vs. carry save) to optimize for power, area, and timing (WNS).</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">SystemVerilog</span>
+                             <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">RTL Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Viterbi Decoder</h4>
+                        <p class="mb-4 text-gray-400">Designed and verified a Viterbi decoder for a ½-rate convolutional encoder using SystemVerilog. Synthesized with Quartus, validated in ModelSim, and tested error correction with injected single and multi-bit errors.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">SystemVerilog</span>
+                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Quartus</span>
+                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">ModelSim</span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="card">
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold text-white mb-2">Dual-Core ML Accelerator</h4>
+                        <p class="mb-4 text-gray-400">Designed a dual-core ML accelerator for transformer attention mechanisms using a 1-D vector processor architecture. Executed the complete RTL-GDS flow, using pipelining and multi-cycle paths to meet timing with zero violations.</p>
+                          <div class="flex flex-wrap gap-2">
+                            <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">RTL-GDS</span>
+                             <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Pipelining</span>
+                             <span class="bg-green-900/50 text-green-300 text-sm font-medium px-2.5 py-0.5 rounded-full">Timing Closure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills & Education Section -->
+        <section id="skills" class="py-20 bg-black/20 -mx-6 px-6">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                <!-- Skills -->
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-12 text-left">Skills</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-white">EDA Tools</h4>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Cadence Virtuoso</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Genus</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Innovus</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Synopsys Custom Compiler</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">ICC2</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Design Compiler</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">PrimeTime</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">CalibreDRV</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Intel Quartus</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Siemens ModelSim</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Yosys</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">OpenSTA</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-white">Technical Languages</h4>
+                             <div class="flex flex-wrap gap-3">
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">C</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">C++</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Python</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Java</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">SKILL</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">TCL</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">JavaScript</span>
+                             </div>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3 text-white">Hardware & Platforms</h4>
+                             <div class="flex flex-wrap gap-3">
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Arduino</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">Raspberry Pi</span>
+                                <span class="bg-gray-700 px-4 py-2 rounded-lg">MATLAB</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Education -->
+                <div>
+                     <h2 class="text-4xl font-bold text-white mb-12 text-left">Education</h2>
+                     <div class="space-y-6">
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
+                            <h3 class="text-xl font-bold text-white">University of California, San Diego</h3>
+                            <p class="text-md text-blue-400 font-semibold">Master of Science in Electrical and Computer Engineering</p>
+                            <p class="text-sm text-gray-400 mt-1">Sep 2024 - Aug 2026</p>
+                        </div>
+                         <div class="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700">
+                            <h3 class="text-xl font-bold text-white">Sri Sivasubramaniya Nadar (SSN) College of Engineering</h3>
+                            <p class="text-md text-blue-400 font-semibold">Bachelor of Engineering in Electrical and Electronics Engineering</p>
+                            <p class="text-sm text-gray-400 mt-1">June 2018 - May 2022</p>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+             <h2 class="section-title">Get In Touch</h2>
+             <div class="max-w-2xl mx-auto text-center">
+                 <p class="text-lg mb-8 text-gray-400">I'm currently seeking new opportunities and am open to collaborations. Feel free to reach out if you have a project in mind or just want to connect using the form below!</p>
+             </div>
+            <div class="max-w-2xl mx-auto bg-gray-800/50 backdrop-blur-sm border border-gray-700 p-8 rounded-xl shadow-lg">
+                <form action="https://formsubmit.co/suraj2001j@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="true">
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission">
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-left text-sm font-medium text-gray-300 mb-2">Full Name</label>
+                            <input type="text" name="name" id="name" placeholder="John Doe" required class="dark-input">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-left text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <input type="email" name="email" id="email" placeholder="you@example.com" required class="dark-input">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="message" class="block text-left text-sm font-medium text-gray-300 mb-2">Message</label>
+                        <textarea name="message" id="message" rows="5" placeholder="Your message..." required class="dark-input"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="w-full md:w-auto inline-flex items-center justify-center bg-blue-600 text-white text-lg font-semibold px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">
+                            Send Message
+                            <i data-lucide="send" class="ml-2 w-5 h-5"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800/50 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+             <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://linkedin.com/profile/suraj-natarajan" target="_blank" class="text-gray-400 hover:text-white">
+                    <i data-lucide="linkedin" class="w-6 h-6"></i>
+                </a>
+                <a href="mailto:suraj2001j@gmail.com" class="text-gray-400 hover:text-white">
+                    <i data-lucide="mail" class="w-6 h-6"></i>
+                </a>
+            </div>
+            <p>&copy; <span id="year"></span> Suraj Subramaniam Natarajan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
